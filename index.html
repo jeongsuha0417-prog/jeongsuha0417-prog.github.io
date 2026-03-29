@@ -15,7 +15,7 @@ onkeydown="if(event.key==='Enter') searchWord()">
     
 <p id="result">결과가 여기에 표시됩니다</p>
 
-<button onclick="copyText()">검색</button>
+<button onclick="copyText()">복사</button>
 
 <script>
 async function searchWord() {
@@ -32,6 +32,12 @@ async function searchWord() {
         `📖 ${word}
 🗣️ ${reading}
 💡 ${meaning}`;
+    
+    function copyText() {
+    let text = document.getElementById("result").innerText;
+    navigator.clipboard.writeText(text);
+    alert("복사됨!");
+}
 
 }
 </script>
