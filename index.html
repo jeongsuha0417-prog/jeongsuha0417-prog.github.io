@@ -8,10 +8,14 @@
 
 <h2>단어 자동 Anki 생성기</h2>
 
-<input type="text" id="word" placeholder="단어 입력">
-<button onclick="searchWord()">검색</button>
+<input type="text" id="word" placeholder="단어 입력"
+onkeydown="if(event.key==='Enter') searchWord()">
 
-<p id="result"></p>
+<button onclick="searchWord()">검색</button>
+    
+<p id="result">결과가 여기에 표시됩니다</p>
+
+<button onclick="copyText()">검색</button>
 
 <script>
 async function searchWord() {
@@ -25,7 +29,10 @@ async function searchWord() {
     let meaning = result.senses[0].english_definitions.join(", ");
 
     document.getElementById("result").innerText =
-        `요미가나: ${reading}\n뜻: ${meaning}`;
+        `📖 ${word}
+🗣️ ${reading}
+💡 ${meaning}`;
+
 }
 </script>
 
