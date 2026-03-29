@@ -33,7 +33,7 @@ async function searchWord() {
 🗣️ ${reading}
 💡 ${meaning}`;
     
-    function copyText() {
+function copyText() {
     let text = document.getElementById("result").innerText;
     navigator.clipboard.writeText(text);
     alert("복사됨!");
