@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>단어 자동 Anki 생성기</h2>
+
+<input type="text" id="word" placeholder="단어 입력">
+<button onclick="searchWord()">검색</button>
+
+<p id="result"></p>
+
+<script>
+async function searchWord() {
+    let word = document.getElementById("word").value;
+
+    let res = await fetch(`https://jisho.org/api/v1/search/words?keyword=${word}`);
+    let data = await res.json();
+
+    let result = data.data[0];
+    let reading = result.japanese[0].reading;
+    let meaning = result.senses[0].english_definitions.join(", ");
+
+    document.getElementById("result").innerText =
+        `요미가나: ${reading}\n뜻: ${meaning}`;
+}
+</script>
+
+</body>
+</html>
